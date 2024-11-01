@@ -1,4 +1,4 @@
-
+from typing import List
 # def convert( s: str, numRows: int) -> str:
 #     array = list(s)
 #     n = len(array)
@@ -18,21 +18,18 @@
 
 #     return ''.join(ans)
 
-def convert( s: str, numRows: int) -> str:
-    n = len(s)
-    rows = [''] * numRows
-    current_row, direction = 0 , 0
-    
-    for c in s :
-        rows[current_row] += c
-        print(current_row)
-        print(rows)
-        if current_row == 0:
-            current_row +=1
-        if current_row == numRows-1:
-            current_row -=1
-    
-    return ''.join(rows)
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        rows = [''] * numRows
+        current_row = 0 
+        
+        for c in s :
+            rows[current_row] += c
+            if current_row == 0:
+                direction =1
+            if current_row == numRows-1:
+                direction =-1
+            current_row +=direction
+            
+        return ''.join(rows)
 
-s =convert('PAHNAPLSIIGYIR',3)
-print(s)
